@@ -5,7 +5,7 @@ import heroImageDesktop from '../../assets/images/homepage/hero-bg-desktop.jpg';
 import reservationImage from '../../assets/images/homepage/ready-bg-mobile.jpg';
 import reservationImageTablet from '../../assets/images/homepage/ready-bg-tablet.jpg';
 import reservationImageDesktop from '../../assets/images/homepage/ready-bg-desktop.jpg';
-import { beaver, ebonyClay, white } from '../../assets/js/colors';
+import { beaver, ebonyClay, white } from '../../styles/colors.js';
 
 const useStyles = makeStyles(theme => ({ //
     homeMain: {
@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme => ({ //
     homeHero: {
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImage})`,
         backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        display: 'flex',
         height: 550,//'94vh',
         padding: '0 5%',
         [theme.breakpoints.up('sm')]: {
@@ -26,7 +23,6 @@ const useStyles = makeStyles(theme => ({ //
             height: 700
         },
         [theme.breakpoints.up('md')]: {
-            alignItems: 'center',
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageDesktop})`,
             height: 600,
             padding: '0 10%',
@@ -39,10 +35,8 @@ const useStyles = makeStyles(theme => ({ //
         backgroundColor: 'transparent',
         color: '#FFF',
         marginBottom: '8rem',
-        textAlign: 'center',
         [theme.breakpoints.up('md')]: {
-            marginBottom: 0,
-            textAlign: 'left'
+            marginBottom: 0
         }
     },
     heroTitle: {
@@ -141,25 +135,16 @@ const useStyles = makeStyles(theme => ({ //
         marginTop: '3rem'
     },
     reservationSection: {
-        alignItems: 'center',
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImage})`,
         backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        display: 'flex',
-        flexDirection: 'column',
         height: 250,//'94vh',
-        justifyContent: 'center',
         padding: '2rem 5%',
-        textAlign: 'center',
         [theme.breakpoints.up('sm')]: {
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImageTablet})`,
             padding: '2rem 10%',
         },
         [theme.breakpoints.up('md')]: {
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImageDesktop})`,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
             height: 240
         },
         [theme.breakpoints.up('lg')]: {

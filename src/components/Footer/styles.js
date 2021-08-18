@@ -1,19 +1,14 @@
 import { makeStyles } from "@material-ui/core";
-import { codGrey, white } from "../../assets/js/colors";
+import { codGrey, white } from "../../styles/colors.js";
 
 
 const useStyles = makeStyles(theme => 
     ({
         footer: {
             backgroundColor: codGrey,
-            textAlign: 'center',
-            padding: '3rem 10%',
-            [theme.breakpoints.up('sm')]: {
-                textAlign: 'left'
-            }
+            padding: '3rem 10%'
         },
         footerLogoContainer: {
-            display: 'block',
             height: 37,
             margin: '0 auto 2rem auto',
             width: 90,
@@ -22,7 +17,6 @@ const useStyles = makeStyles(theme =>
             },
         },
         footerLogo: {
-            display: 'block',
             height: '100%',
             width: '100%'
         },
@@ -37,15 +31,9 @@ const useStyles = makeStyles(theme =>
         },
         footerText: {
             color: white,
+            fontSize: '.8rem',
             lineHeight: '1.7rem',
-            opacity: .8,
-            textTransform: 'uppercase',
-            [theme.breakpoints.up('sm')]: {
-                textAlign: 'left'
-            },
-            [theme.breakpoints.up('md')]: {
-                fontSize: '.8rem'
-            }
+            opacity: .8
         },
         footerAddress: {
             fontStyle: 'normal'

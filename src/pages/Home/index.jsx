@@ -3,10 +3,16 @@ import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.
 import { useCallback, useEffect, useRef } from 'react';
 import { useStyles } from './styles.js';
 import Footer from '../../components/Footer';
+import { useBackground, useDisplay, useResponsive, useTypography } from '../../styles';
 
 
 const Home = () => {
     const classes = useStyles();
+    const bg = useBackground();
+    const display = useDisplay();
+    const responsive = useResponsive();
+    const text = useTypography();
+
     const preventDefault = (event) => event.preventDefault();
     const placesRef = useRef(null);
 
@@ -39,8 +45,11 @@ const Home = () => {
     return (
         <>
             <Container component="main" disableGutters className={classes.homeMain}>
-            <Grid container alignItems="flex-end" component="section" className={classes.homeHero}>
-                <Grid item xs={12} md={6} component={Paper} elevation={0} className={classes.heroPaper}>
+            <Grid container alignItems="flex-end" component="section" 
+                className={`${classes.homeHero} ${bg.noRepeat} ${bg.cover} 
+                ${display.flex} ${responsive.alignMDCenter}`}>
+                <Grid item xs={12} md={6} component={Paper} elevation={0} 
+                    className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
                     <Typography component="h1" variant="h4" className={classes.heroTitle}>
                         Exquisite dining<br/>since 1989
                     </Typography>
@@ -81,7 +90,9 @@ const Home = () => {
                     </Typography>
                 </Grid>
             </Grid>
-            <Container maxWidth="false" className={classes.reservationSection}>
+            <Container maxWidth="false" className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
+                ${display.flexColumn} ${display.justifyCenter} ${display.alignCenter} ${responsive.flexMDRow} 
+                ${responsive.justifyMDBetween} ${text.center}`}>
                 <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
                     Ready to make a reservation?
                 </Typography>
