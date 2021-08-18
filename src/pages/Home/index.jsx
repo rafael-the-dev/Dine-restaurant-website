@@ -1,99 +1,39 @@
 import { Container, Typography, Grid, Paper, Link } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import heroImage from '../../assets/images/homepage/hero-bg-mobile.jpg';
-import heroImageTablet from '../../assets/images/homepage/hero-bg-tablet.jpg';
-import heroImageDesktop from '../../assets/images/homepage/hero-bg-desktop.jpg';
+import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.jpg';
+import { useCallback, useEffect, useRef } from 'react';
+import { useStyles } from './styles.js';
 
-const useStyles = makeStyles(theme => ({ //
-    homeMain: {
-        [theme.breakpoints.up('lg')]: {
-            maxWidth: '100%'
-        }
-    },
-    homeHero: {
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImage})`,
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        display: 'flex',
-        height: 550,//'94vh',
-        padding: '0 5%',
-        [theme.breakpoints.up('sm')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageTablet})`,
-            height: 700
-        },
-        [theme.breakpoints.up('md')]: {
-            alignItems: 'center',
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageDesktop})`,
-            height: 600
-        },
-        [theme.breakpoints.up('lg')]: {
-            height: 700
-        }
-    },
-    heroPaper: {
-        backgroundColor: 'transparent',
-        color: '#FFF',
-        marginBottom: '4rem',
-        textAlign: 'center',
-        [theme.breakpoints.up('md')]: {
-            marginBottom: 0,
-            textAlign: 'left'
-        }
-    },
-    heroTitle: {
-        [theme.breakpoints.up('md')]: {
-            fontSize: '2.7rem'
-        }
-    },
-    heroDescription: {
-        margin: '1rem auto 0 auto',
-        lineHeight: '1.5rem',
-        width: '90%',
-        [theme.breakpoints.up('sm')]: {
-            width: '80%'
-        },
-        [theme.breakpoints.up('md')]: {
-            fontSize: '1rem',
-            lineHeight: '1.8rem',
-            margin: '1rem 0 0 0',
-            width: '80%'
-        },
-        [theme.breakpoints.up('lg')]: {
-            width: '60%'
-        }
-    },
-    heroLink: {
-        border: '1px solid #FFF',
-        borderRadius: 3,
-        color: '#FFF',
-        display: 'block',
-        fontSize: '.95rem',
-        fontWeight: 'bold',
-        margin: '1.5rem auto 0 auto',
-        padding: '.7rem 0',
-        textAlign: 'center',
-        textDecoration: 'none',
-        transition: 'all 400ms ease-in',
-        width: '60%',
-        '&:hover': {
-            backgroundColor: '#FFF',
-            color: '#000',
-            textDecoration: 'none'
-        },
-        [theme.breakpoints.up('sm')]: {
-            width: '45%'
-        },
-        [theme.breakpoints.up('md')]: {
-            margin: '1.5rem 0 0 0',
-            width: '30%'
-        }
-    }
-}));
 
 const Home = () => {
     const classes = useStyles();
     const preventDefault = (event) => event.preventDefault();
+    const placesRef = useRef(null);
+
+    const setImage = useCallback((ref, name) => {
+        import(`../../assets/images/homepage/${name}`)
+            .then(image => ref.current.src = image.default);
+    }, [ ]);
+
+    const imageFilter = useCallback((ref, width) => {
+        if(width >=768) {
+            setImage(ref, 'enjoyable-place-desktop.jpg');
+        } else if(width >= 576) {
+            setImage(ref, 'enjoyable-place-tablet.jpg');
+        } else {
+            setImage(ref, 'enjoyable-place-mobile.jpg');
+        }
+    }, [ setImage ]);
+
+    useEffect(() => {
+        imageFilter(placesRef, window.innerWidth);
+
+        window.addEventListener('resize', event => {
+            let width = event.target.innerWidth; 
+            imageFilter(placesRef, width)
+        });
+
+        return () => window.onresize = null;
+    }, [ imageFilter ]);
 
     return (
         <Container component="main" disableGutters className={classes.homeMain}>
@@ -111,6 +51,42 @@ const Home = () => {
                     </Link>
                 </Grid>
             </Grid>
+            <Grid container component="section" className={classes.services} >
+                <Grid item xs={12} md={6} component="figure" className={classes.servicesImageContainer}>
+                    <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
+                </Grid>
+                <Grid item xs={12} md={6} className={classes.servicesContent}>
+                    <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
+                        Enjoyable place<br/>for all the family
+                    </Typography>
+                    <Typography component="p" variant="body2" className={classes.servicesDescription}>
+                        Our relaxed surroundings make dining with us a great experience for 
+                        everyone. We can even arrange a tour of the farm before your meal.
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Grid container component="section" className={`${classes.services} ${classes.foodSection}`} >
+                <Grid item xs={12} md={6} component="figure" className={ classes.servicesImageContainer }>
+                    <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
+                </Grid>
+                <Grid item xs={12} md={6} className={classes.servicesContent}>
+                    <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
+                        The most locally<br/>sourced food
+                    </Typography>
+                    <Typography component="p" variant="body2" className={classes.servicesDescription}>
+                        All our ingredients come directly from our farm or local fishery. So 
+                        you can be sure that you’re eating the freshest, most sustainable food.
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Container maxWidth="false" className={classes.reservationSection}>
+                <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
+                    Ready to make a reservation?
+                </Typography>
+                <Link href="/" onClick={preventDefault}  className={`${classes.heroLink} ${classes.reservationSectionLink}`}>
+                    Link
+                </Link>
+            </Container>
         </Container>
     )
 };
