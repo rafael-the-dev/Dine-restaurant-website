@@ -2,6 +2,7 @@ import { Container, Typography, Grid, Paper, Link } from '@material-ui/core';
 import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.jpg';
 import { useCallback, useEffect, useRef } from 'react';
 import { useStyles } from './styles.js';
+import Footer from '../../components/Footer';
 
 
 const Home = () => {
@@ -36,7 +37,8 @@ const Home = () => {
     }, [ imageFilter ]);
 
     return (
-        <Container component="main" disableGutters className={classes.homeMain}>
+        <>
+            <Container component="main" disableGutters className={classes.homeMain}>
             <Grid container alignItems="flex-end" component="section" className={classes.homeHero}>
                 <Grid item xs={12} md={6} component={Paper} elevation={0} className={classes.heroPaper}>
                     <Typography component="h1" variant="h4" className={classes.heroTitle}>
@@ -88,6 +90,8 @@ const Home = () => {
                 </Link>
             </Container>
         </Container>
+            <Footer />
+        </>
     )
 };
 
