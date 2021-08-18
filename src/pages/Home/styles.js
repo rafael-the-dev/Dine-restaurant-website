@@ -5,7 +5,7 @@ import heroImageDesktop from '../../assets/images/homepage/hero-bg-desktop.jpg';
 import reservationImage from '../../assets/images/homepage/ready-bg-mobile.jpg';
 import reservationImageTablet from '../../assets/images/homepage/ready-bg-tablet.jpg';
 import reservationImageDesktop from '../../assets/images/homepage/ready-bg-desktop.jpg';
-import { beaver, ebonyClay, white } from '../../styles/colors.js';
+import { beaver, ebonyClay, white, codGrey } from '../../styles/colors.js';
 
 const useStyles = makeStyles(theme => ({ //
     homeMain: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({ //
     },
     heroPaper: {
         backgroundColor: 'transparent',
-        color: '#FFF',
+        color: white,
         marginBottom: '8rem',
         [theme.breakpoints.up('md')]: {
             marginBottom: 0
@@ -62,9 +62,9 @@ const useStyles = makeStyles(theme => ({ //
         }
     },
     heroLink: {
-        border: '1px solid #FFF',
+        border: `1px solid ${white}`,
         borderRadius: 3,
-        color: '#FFF',
+        color: white,
         display: 'block',
         fontSize: '.95rem',
         fontWeight: 'bold',
@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({ //
         transition: 'all 400ms ease-in',
         width: '60%',
         '&:hover': {
-            backgroundColor: '#FFF',
+            backgroundColor: white,
             color: '#000',
             textDecoration: 'none'
         },
@@ -121,8 +121,12 @@ const useStyles = makeStyles(theme => ({ //
             content: '""',
             display: 'block',
             height: 2,
-            margin: '0 auto 1rem auto',
-            width: '20%'
+            margin: '0 auto 2rem auto',
+            width: '20%',
+            [theme.breakpoints.up('md')]: {
+                marginLeft: 0,
+                marginRight: 0
+            }
         }
     },
     servicesDescription: {
@@ -163,6 +167,31 @@ const useStyles = makeStyles(theme => ({ //
         },
         [theme.breakpoints.up('lg')]: {
             width: '20%'
+        }
+    },
+    highlights: {
+        backgroundColor: codGrey,
+        padding: '4rem 7% 2rem 7%',
+        [theme.breakpoints.up('md')]: {
+            padding: '7rem 10%',
+        }
+    },
+    highlighsTitle: {
+        color: white,
+        [theme.breakpoints.up('sm')]: {
+            fontSize: '1.7rem'
+        }
+    },
+    highlightDescription: {
+        [theme.breakpoints.up('md')]: {
+            marginLeft: 0,
+            marginRight: 0
+        }
+    },
+    highlightCardsContainer: {
+        marginTop: '4rem',
+        [theme.breakpoints.up('sm')]: {
+            marginTop: 0
         }
     }
 }));

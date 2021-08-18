@@ -9,6 +9,9 @@ const useBackground = makeStyles(theme => ({
     },
     cover: {
         backgroundSize: 'cover'
+    },
+    transparent: {
+        backgroundColor: 'transparent'
     }
 }));
 

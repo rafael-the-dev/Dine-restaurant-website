@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useStyles } from './styles.js';
 import Footer from '../../components/Footer';
 import { useBackground, useDisplay, useResponsive, useTypography } from '../../styles';
+import HighlightCard from '../../components/HighlightCard';
+import React from 'react';
 
 
 const Home = () => {
@@ -15,6 +17,7 @@ const Home = () => {
 
     const preventDefault = (event) => event.preventDefault();
     const placesRef = useRef(null);
+    const card1ImageRef = React.createRef();
 
     const setImage = useCallback((ref, name) => {
         import(`../../assets/images/homepage/${name}`)
@@ -45,62 +48,91 @@ const Home = () => {
     return (
         <>
             <Container component="main" disableGutters className={classes.homeMain}>
-            <Grid container alignItems="flex-end" component="section" 
-                className={`${classes.homeHero} ${bg.noRepeat} ${bg.cover} 
-                ${display.flex} ${responsive.alignMDCenter}`}>
-                <Grid item xs={12} md={6} component={Paper} elevation={0} 
-                    className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
-                    <Typography component="h1" variant="h4" className={classes.heroTitle}>
-                        Exquisite dining<br/>since 1989
+                <Grid container alignItems="flex-end" component="section" 
+                    className={`${classes.homeHero} ${bg.noRepeat} ${bg.cover} 
+                    ${display.flex} ${responsive.alignMDCenter}`}>
+                    <Grid item xs={12} md={7} component={Paper} elevation={0} 
+                        className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
+                        <Typography component="h1" variant="h4" className={classes.heroTitle}>
+                            Exquisite dining<br/>since 1989
+                        </Typography>
+                        <Typography component="p" variant="body2" className={classes.heroDescription}>
+                            Experience our seasonal menu in beautiful country surroundings. Eat the 
+                            freshest produce from the comfort of our farmhouse.
+                        </Typography>
+                        <Link href="/" onClick={preventDefault}  className={classes.heroLink}>
+                            Link
+                        </Link>
+                    </Grid>
+                </Grid>
+                <Grid container component="section" className={classes.services} >
+                    <Grid item xs={12} md={6} component="figure" className={classes.servicesImageContainer}>
+                        <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
+                    </Grid>
+                    <Grid item xs={12} md={6} className={classes.servicesContent}>
+                        <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
+                            Enjoyable place<br/>for all the family
+                        </Typography>
+                        <Typography component="p" variant="body2" className={classes.servicesDescription}>
+                            Our relaxed surroundings make dining with us a great experience for 
+                            everyone. We can even arrange a tour of the farm before your meal.
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid container component="section" className={`${classes.services} ${classes.foodSection}`} >
+                    <Grid item xs={12} md={6} component="figure" className={ classes.servicesImageContainer }>
+                        <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
+                    </Grid>
+                    <Grid item xs={12} md={6} className={classes.servicesContent}>
+                        <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
+                            The most locally<br/>sourced food
+                        </Typography>
+                        <Typography component="p" variant="body2" className={classes.servicesDescription}>
+                            All our ingredients come directly from our farm or local fishery. So 
+                            you can be sure that you’re eating the freshest, most sustainable food.
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid container component="section" className={`${classes.highlights}`}>
+                    <Grid item xs={12} md={4} component={Paper} elevation={0} className={`${text.center} ${text.mdStart} ${text.light} 
+                        ${bg.transparent}`}>
+                        <Typography component="h2" variant="h5" className={`${classes.servicesSubTitle} ${classes.highlighsTitle}`}>
+                            A few highlights<br/>from our manu
+                        </Typography>
+                        <Typography component="p" variant="body2" className={`${classes.servicesDescription} 
+                            ${classes.highlightDescription}`}>
+                            We cater for all dietary requirements, but here’s a glimpse at some 
+                            of our diner’s favourites. Our menu is revamped every season.
+                        </Typography>
+                    </Grid>
+                    <Grid item md={1}></Grid>
+                    <Grid item xs={12} md={7} component={Paper} elevation={0} 
+                        className={`${bg.transparent} ${classes.highlightCardsContainer}`}>
+                        <HighlightCard ref={card1ImageRef} 
+                            title="Seared Salmon Fillet"
+                            description="Our locally sourced salmon served with a refreshing buckwheat summer salad."
+                         />
+                         <HighlightCard ref={card1ImageRef} 
+                            title="Rosemary Filet Mignon"
+                            description="Our prime beef served to your taste with a delicious choice of seasonal sides."
+                         />
+                         <HighlightCard ref={card1ImageRef} 
+                            title="Summer Fruit Chocolate Mousse"
+                            description="Creamy mousse combined with summer fruits and dark chocolate shavings."
+                         />
+                    </Grid>
+                </Grid>
+                <Container maxWidth="false" className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
+                    ${display.flexColumn} ${display.justifyCenter} ${display.alignCenter} ${responsive.flexMDRow} 
+                    ${responsive.justifyMDBetween} ${text.center}`}>
+                    <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
+                        Ready to make a reservation?
                     </Typography>
-                    <Typography component="p" variant="body2" className={classes.heroDescription}>
-                        Experience our seasonal menu in beautiful country surroundings. Eat the 
-                        freshest produce from the comfort of our farmhouse.
-                    </Typography>
-                    <Link href="/" onClick={preventDefault}  className={classes.heroLink}>
+                    <Link href="/" onClick={preventDefault}  className={`${classes.heroLink} ${classes.reservationSectionLink}`}>
                         Link
                     </Link>
-                </Grid>
-            </Grid>
-            <Grid container component="section" className={classes.services} >
-                <Grid item xs={12} md={6} component="figure" className={classes.servicesImageContainer}>
-                    <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
-                </Grid>
-                <Grid item xs={12} md={6} className={classes.servicesContent}>
-                    <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
-                        Enjoyable place<br/>for all the family
-                    </Typography>
-                    <Typography component="p" variant="body2" className={classes.servicesDescription}>
-                        Our relaxed surroundings make dining with us a great experience for 
-                        everyone. We can even arrange a tour of the farm before your meal.
-                    </Typography>
-                </Grid>
-            </Grid>
-            <Grid container component="section" className={`${classes.services} ${classes.foodSection}`} >
-                <Grid item xs={12} md={6} component="figure" className={ classes.servicesImageContainer }>
-                    <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
-                </Grid>
-                <Grid item xs={12} md={6} className={classes.servicesContent}>
-                    <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
-                        The most locally<br/>sourced food
-                    </Typography>
-                    <Typography component="p" variant="body2" className={classes.servicesDescription}>
-                        All our ingredients come directly from our farm or local fishery. So 
-                        you can be sure that you’re eating the freshest, most sustainable food.
-                    </Typography>
-                </Grid>
-            </Grid>
-            <Container maxWidth="false" className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
-                ${display.flexColumn} ${display.justifyCenter} ${display.alignCenter} ${responsive.flexMDRow} 
-                ${responsive.justifyMDBetween} ${text.center}`}>
-                <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
-                    Ready to make a reservation?
-                </Typography>
-                <Link href="/" onClick={preventDefault}  className={`${classes.heroLink} ${classes.reservationSectionLink}`}>
-                    Link
-                </Link>
+                </Container>
             </Container>
-        </Container>
             <Footer />
         </>
     )

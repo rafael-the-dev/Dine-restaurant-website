@@ -16,14 +16,20 @@ const useResponsive = makeStyles(theme => (
         flexColumn: {
             flexDirection: 'column'
         },
+        alignSMCenter: {
+            alignItems: 'center'
+        },
+        smFlex: {
+            display: 'flex'
+        },
         flexMDRow: {
             [theme.breakpoints.up('md')]: {
-                flexDirection: 'row'
+                flexDirection: 'row !important'
             }
         },
         justifyMDBetween: {
             [theme.breakpoints.up('md')]: {
-                justifyContent: 'space-between'
+                justifyContent: 'space-between !important'
             }
         },
         justifyCenter: {

@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { white } from "./colors";
 
 const useTypography = makeStyles((theme => ({
     start: {
@@ -9,6 +10,12 @@ const useTypography = makeStyles((theme => ({
     },
     end: {
         textAlign: 'right'
+    },
+    weight7: {
+        fontWeight: 700
+    },
+    light: {
+        color: white
     },
     uppercase: {
         textTransform: 'uppercase'
