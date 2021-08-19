@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme =>
     ({
         footer: {
             backgroundColor: codGrey,
-            padding: '3rem 10%'
+            paddingBottom: '3rem',
+            paddingTop: '3rem'
         },
         footerLogoContainer: {
             height: 37,

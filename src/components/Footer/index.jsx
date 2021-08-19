@@ -2,17 +2,18 @@ import { Grid, Paper, Typography} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useStyles } from './styles.js';
 import logo from '../../assets/icons/logo.svg';
-import { useDisplay, useTypography } from '../../styles'
+import { useDisplay, useTypography, useResponsive } from '../../styles'
 
 const Footer = () => {
     const classes = useStyles();
     const display = useDisplay();
     const text = useTypography();
+    const responsive = useResponsive();
 
     return (
-        <Grid container component="footer" className={classes.footer}>
+        <Grid container component="footer" className={`${classes.footer} ${responsive.px}`}>
             <Grid item component={Paper} xs={12} sm={4} md={3} className={classes.footerPaper}>
-                <Link className={`${classes.footerLogoContainer} ${display.block}`}>
+                <Link to="/" className={`${classes.footerLogoContainer} ${display.block}`}>
                     <img src={logo} alt="Logo" className={`${classes.footerLogo} ${display.block}`} />
                 </Link>
             </Grid>

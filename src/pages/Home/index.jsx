@@ -47,10 +47,10 @@ const Home = () => {
 
     return (
         <>
-            <Container component="main" disableGutters className={classes.homeMain}>
+            <Container component="main" maxWidth={false} disableGutters className={classes.homeMain}>
                 <Grid container alignItems="flex-end" component="section" 
                     className={`${classes.homeHero} ${bg.noRepeat} ${bg.cover} 
-                    ${display.flex} ${responsive.alignMDCenter}`}>
+                    ${display.flex} ${responsive.alignMDCenter} ${responsive.px}`}>
                     <Grid item xs={12} md={7} component={Paper} elevation={0} 
                         className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
                         <Typography component="h1" variant="h4" className={classes.heroTitle}>
@@ -65,11 +65,12 @@ const Home = () => {
                         </Link>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={classes.services} >
-                    <Grid item xs={12} md={6} component="figure" className={classes.servicesImageContainer}>
+                <Grid container component="section" className={`${classes.services} ${classes.placesSection} 
+                     ${responsive.px} ${responsive.AlignMDCenter}`}>
+                    <Grid item xs={12} md={6} lg={5} xl={4} component="figure" className={classes.servicesImageContainer}>
                         <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
                     </Grid>
-                    <Grid item xs={12} md={6} className={classes.servicesContent}>
+                    <Grid item xs={12} md={6} lg={7} xl={8} className={`${classes.servicesContent} ${classes.placesSectionContent}`}>
                         <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
                             Enjoyable place<br/>for all the family
                         </Typography>
@@ -79,11 +80,12 @@ const Home = () => {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.services} ${classes.foodSection}`} >
-                    <Grid item xs={12} md={6} component="figure" className={ classes.servicesImageContainer }>
+                <Grid container component="section" className={`${classes.services} ${classes.foodSection} 
+                     ${responsive.px} ${responsive.AlignMDCenter}`} >
+                    <Grid item xs={12} md={6} lg={5} xl={4} component="figure" className={ classes.servicesImageContainer }>
                         <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
                     </Grid>
-                    <Grid item xs={12} md={6} className={classes.servicesContent}>
+                    <Grid item xs={12} md={6} lg={7} xl={8} className={`${classes.servicesContent} ${classes.foodSectionContent}`}>
                         <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
                             The most locally<br/>sourced food
                         </Typography>
@@ -93,7 +95,7 @@ const Home = () => {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.highlights}`}>
+                <Grid container component="section" className={`${classes.highlights}  ${responsive.px}`}>
                     <Grid item xs={12} md={4} component={Paper} elevation={0} className={`${text.center} ${text.mdStart} ${text.light} 
                         ${bg.transparent}`}>
                         <Typography component="h2" variant="h5" className={`${classes.servicesSubTitle} ${classes.highlighsTitle}`}>
@@ -122,9 +124,9 @@ const Home = () => {
                          />
                     </Grid>
                 </Grid>
-                <Container maxWidth="false" className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
+                <Container maxWidth={false} className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
                     ${display.flexColumn} ${display.justifyCenter} ${display.alignCenter} ${responsive.flexMDRow} 
-                    ${responsive.justifyMDBetween} ${text.center}`}>
+                    ${responsive.justifyMDBetween} ${text.center}  ${responsive.px}`}>
                     <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
                         Ready to make a reservation?
                     </Typography>

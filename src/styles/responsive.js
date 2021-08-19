@@ -16,11 +16,25 @@ const useResponsive = makeStyles(theme => (
         flexColumn: {
             flexDirection: 'column'
         },
+        px: {
+            paddingLeft: '5%',
+            paddingRight: '5%',
+            [theme.breakpoints.up('md')]: {
+                paddingLeft: '10%',
+                paddingRight: '10%'
+            },
+            [theme.breakpoints.up(1400)]: {
+                paddingLeft: '15%',
+                paddingRight: '15%'
+            }
+        },
         alignSMCenter: {
             alignItems: 'center'
         },
         smFlex: {
-            display: 'flex'
+            [theme.breakpoints.up('sm')]: {
+                display: 'flex'
+            }
         },
         flexMDRow: {
             [theme.breakpoints.up('md')]: {
@@ -34,6 +48,11 @@ const useResponsive = makeStyles(theme => (
         },
         justifyCenter: {
             justifyContent: 'center'
+        },
+        AlignMDCenter: {
+            [theme.breakpoints.up('md')]: {
+                alignItems: 'center'
+            }
         }
     }
 ));

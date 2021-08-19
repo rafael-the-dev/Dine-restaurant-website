@@ -8,16 +8,10 @@ import reservationImageDesktop from '../../assets/images/homepage/ready-bg-deskt
 import { beaver, ebonyClay, white, codGrey } from '../../styles/colors.js';
 
 const useStyles = makeStyles(theme => ({ //
-    homeMain: {
-        [theme.breakpoints.up('lg')]: {
-            maxWidth: '100%'
-        }
-    },
     homeHero: {
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImage})`,
         backgroundPosition: 'center top',
         height: 550,//'94vh',
-        padding: '0 5%',
         [theme.breakpoints.up('sm')]: {
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageTablet})`,
             height: 700
@@ -25,7 +19,6 @@ const useStyles = makeStyles(theme => ({ //
         [theme.breakpoints.up('md')]: {
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageDesktop})`,
             height: 600,
-            padding: '0 10%',
         },
         [theme.breakpoints.up('lg')]: {
             height: 700
@@ -88,9 +81,12 @@ const useStyles = makeStyles(theme => ({ //
         }
     },
     services: {
-        padding: '0 5% 4rem 5%',
+        paddingBottom: '4rem',
         [theme.breakpoints.up('sm')]: {
-            padding: '0 10% 2rem 10%',
+            paddingBottom: '2rem',
+            '&:nth-child(odd)': {
+                flexDirection: 'row-reverse'
+            }
         }
     },
     servicesImageContainer: {
@@ -100,6 +96,13 @@ const useStyles = makeStyles(theme => ({ //
         zIndex: 10,
         [theme.breakpoints.up('sm')]: {
             height: 300,
+        },
+        [theme.breakpoints.up('md')]: {
+            height: 350,
+            transform: 'translateY(0)'
+        },
+        [theme.breakpoints.up('lg')]: {
+            height: 400
         }
     },
     servicesImage: {
@@ -121,11 +124,12 @@ const useStyles = makeStyles(theme => ({ //
             content: '""',
             display: 'block',
             height: 2,
-            margin: '0 auto 2rem auto',
+            margin: '0 auto 2.3rem auto',
             width: '20%',
             [theme.breakpoints.up('md')]: {
                 marginLeft: 0,
-                marginRight: 0
+                marginRight: 0,
+                width: 77
             }
         }
     },
@@ -133,22 +137,51 @@ const useStyles = makeStyles(theme => ({ //
         fontSize: '.95rem',
         lineHeight: '1.6rem',
         margin: '1.3rem auto 0 auto',
-        width: '94%'
+        width: '94%',
+        [theme.breakpoints.up('md')]: {
+            margin: '1.3rem 0 0 0'
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: '80%'
+        }
+    },
+    placesSection: {
+        transform: 'translateY(-67px)',
+        paddingBottom: 0
+    },
+    placesSectionContent: {
+        [theme.breakpoints.up('md')]: {
+            marginTop: '5rem',
+            padding: '0 5%',
+        },
+        [theme.breakpoints.up('lg')]: {
+            padding: '0 5% 0 15%',
+        }
     },
     foodSection: {
-        marginTop: '3rem'
+        marginTop: '4rem',
+        [theme.breakpoints.up('md')]: {
+            marginTop: 0,
+            transform: 'translateY(73px)'
+        }
+    },
+    foodSectionContent: {
+        [theme.breakpoints.up('md')]: {
+            marginBottom: '3rem',
+            paddingRight: '5%'
+        }
     },
     reservationSection: {
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImage})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .3)), url(${reservationImage})`,
         backgroundPosition: 'center top',
         height: 250,//'94vh',
-        padding: '2rem 5%',
+        paddingBottom: '2rem',
+        paddingTop: '2rem',
         [theme.breakpoints.up('sm')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImageTablet})`,
-            padding: '2rem 10%',
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(${reservationImageTablet})`,
         },
         [theme.breakpoints.up('md')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${reservationImageDesktop})`,
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(${reservationImageDesktop})`,
             height: 240
         },
         [theme.breakpoints.up('lg')]: {
@@ -171,9 +204,11 @@ const useStyles = makeStyles(theme => ({ //
     },
     highlights: {
         backgroundColor: codGrey,
-        padding: '4rem 7% 2rem 7%',
+        paddingBottom: '2rem',
+        paddingTop: '4rem',
         [theme.breakpoints.up('md')]: {
-            padding: '7rem 10%',
+            paddingBottom: '3rem',
+            paddingTop: '7rem',
         }
     },
     highlighsTitle: {
