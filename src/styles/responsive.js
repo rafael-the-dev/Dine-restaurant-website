@@ -19,7 +19,7 @@ const useResponsive = makeStyles(theme => (
         px: {
             paddingLeft: '5%',
             paddingRight: '5%',
-            [theme.breakpoints.up('md')]: {
+            [theme.breakpoints.up('sm')]: {
                 paddingLeft: '10%',
                 paddingRight: '10%'
             },
@@ -36,9 +36,19 @@ const useResponsive = makeStyles(theme => (
                 display: 'flex'
             }
         },
+        flexSMRow: {
+            [theme.breakpoints.up('sm')]: {
+                flexDirection: 'row !important'
+            }
+        },
         flexMDRow: {
             [theme.breakpoints.up('md')]: {
                 flexDirection: 'row !important'
+            }
+        },
+        flexMDColumn: {
+            [theme.breakpoints.up('md')]: {
+                flexDirection: 'column !important'
             }
         },
         justifyMDBetween: {
@@ -48,6 +58,11 @@ const useResponsive = makeStyles(theme => (
         },
         justifyCenter: {
             justifyContent: 'center'
+        },
+        alignMDStart: {
+            [theme.breakpoints.up('md')]: {
+                alignItems: 'flex-start !important'
+            }
         },
         AlignMDCenter: {
             [theme.breakpoints.up('md')]: {

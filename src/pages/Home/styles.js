@@ -7,17 +7,20 @@ import reservationImageTablet from '../../assets/images/homepage/ready-bg-tablet
 import reservationImageDesktop from '../../assets/images/homepage/ready-bg-desktop.jpg';
 import { beaver, ebonyClay, white, codGrey } from '../../styles/colors.js';
 
+const linearGradient = 'linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4))';
+const linearGradientTablet = 'linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4))';
+
 const useStyles = makeStyles(theme => ({ //
     homeHero: {
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImage})`,
+        backgroundImage: `${linearGradient}, url(${heroImage})`,
         backgroundPosition: 'center top',
         height: 550,//'94vh',
         [theme.breakpoints.up('sm')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageTablet})`,
+            backgroundImage: `${linearGradientTablet}, url(${heroImageTablet})`,
             height: 700
         },
         [theme.breakpoints.up('md')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url(${heroImageDesktop})`,
+            backgroundImage: `${linearGradientTablet}, url(${heroImageDesktop})`,
             height: 600,
         },
         [theme.breakpoints.up('lg')]: {
@@ -96,10 +99,10 @@ const useStyles = makeStyles(theme => ({ //
         zIndex: 10,
         [theme.breakpoints.up('sm')]: {
             height: 300,
+            transform: 'translateY(0)'
         },
         [theme.breakpoints.up('md')]: {
-            height: 350,
-            transform: 'translateY(0)'
+            height: 350
         },
         [theme.breakpoints.up('lg')]: {
             height: 400
@@ -138,6 +141,10 @@ const useStyles = makeStyles(theme => ({ //
         lineHeight: '1.6rem',
         margin: '1.3rem auto 0 auto',
         width: '94%',
+        [theme.breakpoints.up('sm')]: {
+            marginTop: '1rem',
+            width: '80%'
+        },
         [theme.breakpoints.up('md')]: {
             margin: '1.3rem 0 0 0'
         },
@@ -171,17 +178,76 @@ const useStyles = makeStyles(theme => ({ //
             paddingRight: '5%'
         }
     },
+    gatheringSection: {
+        paddingBottom: '2rem',
+        paddingTop: '2rem',
+        [theme.breakpoints.up('sm')]: {
+            marginBottom: '4rem',
+            paddingTop: '5rem'
+        }
+    },
+    gatheringSectionImageContainer: {
+        [theme.breakpoints.up('md')]: {
+            height: 450
+        }
+    },
+    gatheringSectionContentContainer: {
+        [theme.breakpoints.up('sm')]: {
+            marginTop: '3rem'
+        },
+        [theme.breakpoints.up('md')]: {
+            paddingLeft: '10%',
+            flexDirection: 'column-reverse'
+        }
+    },
+    gatheringSectionButtonGroup: {
+    },
+    gatheringSectionButton: {
+        border: 'none !important',
+        fontSize: '.8rem',
+        opacity: .8,
+        transition: '400ms all ease',
+        '&:not(.active):hover': {
+            backgroundColor: 'transparent !important',
+            color: codGrey,
+            fontSize: '.85rem',
+            fontWeight: 700
+        },
+        [theme.breakpoints.up('md')]: {
+            paddingLeft: 0
+        }
+    },
+    gatheringSectionContent: {
+        marginTop: '2rem',
+        [theme.breakpoints.up('md')]: {
+            marginBottom: '2rem',
+            marginTop: 0
+        }
+    },
+    gatheringSectionLink: {
+        backgroundColor: codGrey,
+        border: `none`,
+        color: white,
+        '&:hover': {
+            backgroundColor: 'transparent',
+            border: `1px solid ${codGrey}`,
+            color: codGrey,
+        },
+        [theme.breakpoints.up('sm')]: {
+            marginTop: '3rem'
+        }
+    },
     reservationSection: {
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .3)), url(${reservationImage})`,
+        backgroundImage: `${linearGradient}, url(${reservationImage})`,
         backgroundPosition: 'center top',
         height: 250,//'94vh',
         paddingBottom: '2rem',
         paddingTop: '2rem',
         [theme.breakpoints.up('sm')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(${reservationImageTablet})`,
+            backgroundImage: `${linearGradientTablet}, url(${reservationImageTablet})`,
         },
         [theme.breakpoints.up('md')]: {
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(${reservationImageDesktop})`,
+            backgroundImage: `${linearGradientTablet}, url(${reservationImageDesktop})`,
             height: 240
         },
         [theme.breakpoints.up('lg')]: {
@@ -224,7 +290,7 @@ const useStyles = makeStyles(theme => ({ //
         }
     },
     highlightCardsContainer: {
-        marginTop: '4rem',
+        marginTop: '3.5rem',
         [theme.breakpoints.up('sm')]: {
             marginTop: 0
         }
