@@ -1,11 +1,13 @@
-import { Container, Typography, Grid, Paper, Link, ButtonGroup, Button } from '@material-ui/core';
+import { Container, Typography, Grid, Paper, Link } from '@material-ui/core';
 import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.jpg';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useStyles } from './styles.js';
 import Footer from '../../components/Footer';
 import { useBackground, useDisplay, useResponsive, useTypography } from '../../styles';
 import HighlightCard from '../../components/HighlightCard';
 import React from 'react';
+import classNames from 'classnames';
+import GatheringSection from '../../components/GatheringSection';
 
 
 const Home = () => {
@@ -18,6 +20,8 @@ const Home = () => {
     const preventDefault = (event) => event.preventDefault();
     const placesRef = useRef(null);
     const card1ImageRef = React.createRef();
+
+    const [ carossel, setCarossel ] = useState('family');
 
     const setImage = useCallback((ref, name) => {
         import(`../../assets/images/homepage/${name}`)
@@ -45,12 +49,16 @@ const Home = () => {
         return () => window.onresize = null;
     }, [ imageFilter ]);
 
+    const familyGatheringClickHandler = () => setCarossel(c => 'family');
+    const specialEventsClickHandler = () => setCarossel(c => 'special');
+    const socialEventsClickHandler = () => setCarossel(c => 'social');
+
     return (
         <>
             <Container component="main" maxWidth={false} disableGutters className={classes.homeMain}>
                 <Grid container alignItems="flex-end" component="section" 
-                    className={`${classes.homeHero} ${bg.noRepeat} ${bg.cover} 
-                    ${display.flex} ${responsive.alignMDCenter} ${responsive.px}`}>
+                    className={classNames(classes.homeHero, bg.noRepeat, bg.cover, 
+                    display.flex, responsive.alignMDCenter, responsive.px)}>
                     <Grid item xs={12} md={7} component={Paper} elevation={0} 
                         className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
                         <Typography component="h1" variant="h4" className={classes.heroTitle}>
@@ -65,12 +73,12 @@ const Home = () => {
                         </Link>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.services} ${classes.placesSection} 
-                     ${responsive.px} ${responsive.AlignMDCenter}`}>
+                <Grid container component="section" className={classNames(classes.services, classes.placesSection, 
+                     responsive.px, responsive.AlignMDCenter)}>
                     <Grid item xs={12} md={6} lg={5} xl={4} component="figure" className={classes.servicesImageContainer}>
                         <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
                     </Grid>
-                    <Grid item xs={12} md={6} lg={7} xl={8} className={`${classes.servicesContent} ${classes.placesSectionContent}`}>
+                    <Grid item xs={12} md={6} lg={7} xl={8} className={classNames(classes.servicesContent, classes.placesSectionContent)}>
                         <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
                             Enjoyable place<br/>for all the family
                         </Typography>
@@ -80,12 +88,13 @@ const Home = () => {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.services} ${classes.foodSection} 
-                     ${responsive.px} ${responsive.AlignMDCenter}`} >
+                <Grid container component="section" className={classNames(classes.services, classes.foodSection, 
+                     responsive.px, responsive.AlignMDCenter)} >
+                         <Grid item xl={1}></Grid>
                     <Grid item xs={12} md={6} lg={5} xl={4} component="figure" className={ classes.servicesImageContainer }>
                         <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
                     </Grid>
-                    <Grid item xs={12} md={6} lg={7} xl={8} className={`${classes.servicesContent} ${classes.foodSectionContent}`}>
+                    <Grid item xs={12} md={6} lg={7} xl={7} className={`${classes.servicesContent} ${classes.foodSectionContent}`}>
                         <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
                             The most locally<br/>sourced food
                         </Typography>
@@ -95,10 +104,10 @@ const Home = () => {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.highlights}  ${responsive.px}`}>
-                    <Grid item xs={12} md={4} component={Paper} elevation={0} className={`${text.center} ${text.mdStart} ${text.light} 
-                        ${bg.transparent}`}>
-                        <Typography component="h2" variant="h5" className={`${classes.servicesSubTitle} ${classes.highlighsTitle}`}>
+                <Grid container component="section" className={classNames(classes.highlights, responsive.px)}>
+                    <Grid item xs={12} md={4} component={Paper} elevation={0} className={classNames(text.center, 
+                        text.mdStart, text.light, bg.transparent)}>
+                        <Typography component="h2" variant="h5" className={classNames(classes.servicesSubTitle, classes.highlighsTitle)}>
                             A few highlights<br/>from our manu
                         </Typography>
                         <Typography component="p" variant="body2" className={`${classes.servicesDescription} 
@@ -109,7 +118,7 @@ const Home = () => {
                     </Grid>
                     <Grid item md={1}></Grid>
                     <Grid item xs={12} md={7} component={Paper} elevation={0} 
-                        className={`${bg.transparent} ${classes.highlightCardsContainer}`}>
+                        className={classNames(bg.transparent, classes.highlightCardsContainer)}>
                         <HighlightCard ref={card1ImageRef} 
                             title="Seared Salmon Fillet"
                             description="Our locally sourced salmon served with a refreshing buckwheat summer salad."
@@ -124,45 +133,49 @@ const Home = () => {
                          />
                     </Grid>
                 </Grid>
-                <Grid container component="section" className={`${classes.gatheringSection} 
-                     ${responsive.px} ${responsive.AlignMDCenter}`}>
-                    <Grid item xs={12} md={6} lg={5} xl={4} component="figure" className={classes.servicesImageContainer}>
-                        <img ref={placesRef} src={enjoyablePlace} alt="Enjoyable places for the all family" className={classes.servicesImage} />
-                    </Grid>
-                    <Grid container item direction="column" xs={12} md={6} lg={7} xl={8} className={`${classes.gatheringSectionContentContainer}`}>
-                        <ButtonGroup 
-                                disableElevation 
-                                variant="text" 
-                                aria-label="small outlined button group"
-                                className={`${classes.gatheringSectionButtonGrOUP} ${display.flex} ${display.flexColumn}
-                                ${display.alignCenter} ${text.uppercase} ${responsive.flexSMRow} ${responsive.alignSMCenter}
-                                ${display.justifyCenter} ${responsive.flexMDColumn} ${responsive.alignMDStart}`}>
-                                <Button className={classes.gatheringSectionButton}>Family gathering</Button>
-                                <Button className={classes.gatheringSectionButton}>Special Events</Button>
-                                <Button className={classes.gatheringSectionButton}>Social Events</Button>
-                            </ButtonGroup>
-                        <Paper elevation={0} className={`${classes.servicesContent} ${classes.gatheringSectionContent}`}>
-                            <Typography component="h2" variant="h5" gutterBottom className={classes.servicesSubTitle} >
-                                Family Gathering
-                            </Typography>
-                            <Typography component="p" variant="body2" className={classes.servicesDescription}>
-                                We love catering for entire families. So please bring everyone along 
-                                for a special meal with your loved ones. We’ll provide a memorable 
-                                experience for all.
-                            </Typography>
-                            <Link href="/" onClick={preventDefault}  className={`${classes.heroLink} ${classes.gatheringSectionLink}`}>
-                                Link
-                            </Link>
-                        </Paper>
-                    </Grid>
+                <Grid container component="section" >
+                    <GatheringSection 
+                        ref={placesRef} 
+                        name="family" 
+                        title="Family Gathering"
+                        familyGatheringClickHandler={familyGatheringClickHandler} 
+                        specialEventsClickHandler={specialEventsClickHandler}
+                        socialEventsClickHandler={socialEventsClickHandler}
+                        carossel={carossel}
+                        description="We love catering for entire families. So please bring everyone along 
+                        for a special meal with your loved ones. We’ll provide a memorable 
+                        experience for all."
+                    />
+                    <GatheringSection 
+                        ref={placesRef} 
+                        name="special" 
+                        title="Special Events"
+                        familyGatheringClickHandler={familyGatheringClickHandler} 
+                        specialEventsClickHandler={specialEventsClickHandler}
+                        socialEventsClickHandler={socialEventsClickHandler}
+                        carossel={carossel}
+                        description="Whether it’s a romantic dinner or special date you’re celebrating with 
+                        others we’ll look after you. We’ll be sure to mark your special date with an unforgettable meal."
+                    />
+                    <GatheringSection 
+                        ref={placesRef} 
+                        name="social" 
+                        title="Social Events"
+                        familyGatheringClickHandler={familyGatheringClickHandler} 
+                        specialEventsClickHandler={specialEventsClickHandler}
+                        socialEventsClickHandler={socialEventsClickHandler}
+                        carossel={carossel}
+                        description="Are you looking to have a larger social event? No problem! We’re more 
+                        than happy to cater for big parties. We’ll work with you to make your event a hit with everyone."
+                    />
                 </Grid>
-                <Container maxWidth={false} className={`${classes.reservationSection} ${bg.noRepeat} ${bg.cover} ${display.flex}
-                    ${display.flexColumn} ${display.justifyCenter} ${display.alignCenter} ${responsive.flexMDRow} 
-                    ${responsive.justifyMDBetween} ${text.center}  ${responsive.px}`}>
-                    <Typography component="h2" variant="h5" className={classes.reservationSectionTitle}>
+                <Container maxWidth={false} className={classNames(classes.reservationSection, bg.noRepeat, bg.cover, display.flex,
+                    display.flexColumn, display.justifyCenter, display.alignCenter, responsive.flexMDRow, 
+                    responsive.justifyMDBetween, text.center, responsive.px)} component="section">
+                    <Typography component="h2" variant="h5" className={classNames(classes.reservationSectionTitle)}>
                         Ready to make a reservation?
                     </Typography>
-                    <Link href="/" onClick={preventDefault}  className={`${classes.heroLink} ${classes.reservationSectionLink}`}>
+                    <Link href="/" onClick={preventDefault}  className={classNames(classes.heroLink, classes.reservationSectionLink)}>
                         Link
                     </Link>
                 </Container>
