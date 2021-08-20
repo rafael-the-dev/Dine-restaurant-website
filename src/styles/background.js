@@ -7,6 +7,9 @@ const useBackground = makeStyles(theme => ({
     noRepeat: {
         backgroundRepeat: 'no-repeat'
     },
+    contain: {
+        backgroundSize: 'contain'
+    },
     cover: {
         backgroundSize: 'cover'
     },

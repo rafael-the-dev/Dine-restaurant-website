@@ -38,8 +38,8 @@ const Booking = () => {
             <Container component="main" maxWidth={false} disableGutters className={classes.homeMain}>
                 <Grid container alignItems="flex-end" component="section" 
                     className={classNames(classes.bookingHero, bg.noRepeat, bg.cover, 
-                    display.flex, display.alignStart, responsive.alignMDCenter, responsive.px)}>
-                    <Grid item xs={12} md={7} component={Paper} elevation={0} 
+                    display.flex, display.alignStart, responsive.alignMDCenter, responsive.px, responsive.alignLGEnd)}>
+                    <Grid item xs={12} md={8} lg={7} component={Paper} elevation={0} 
                         className={classNames(classes.heroPaper, bg.transparent, text.center, text.mdStart)}>
                         <Typography component="h1" variant="h4" className={services.heroTitle}>
                             Exquisite dining<br/>since 1989
@@ -53,7 +53,8 @@ const Booking = () => {
                         </Link>
                     </Grid>
                 </Grid>
-                <Container maxWidth={false}  className={classNames(classes.px, )}>
+                <Container maxWidth={false} component="section"
+                    className={classNames(classes.px, classes.bookingFormContainer)}>
                     <Paper component="form" autoComplete="off" className={classNames(classes.bookingForm)}>
                         <TextField 
                             id="standard-basic" 
@@ -73,16 +74,24 @@ const Booking = () => {
                                 <TextField 
                                     id="standard-basic" 
                                     label="MM" 
+                                    type="number"
+                                    min="1"
+                                    max="12"
                                     className={classNames(classes.bookingInput)}
                                 />
                                 <TextField 
                                     id="standard-basic" 
                                     label="DD" 
+                                    type="number"
+                                    min="1"
+                                    max="31"
                                     className={classNames(classes.bookingInput)}
                                 />
                                 <TextField 
                                     id="standard-basic" 
                                     label="YYYY" 
+                                    type="number"
+                                    max={new Date(Date.now()).getFullYear()}
                                     className={classNames(classes.bookingInput)}
                                 />
                             </Paper>
@@ -93,11 +102,17 @@ const Booking = () => {
                                 <TextField 
                                     id="standard-basic" 
                                     label="MM" 
+                                    type="number"
+                                    min="0"
+                                    max="12"
                                     className={classNames(classes.bookingInput)}
                                 />
                                 <TextField 
                                     id="standard-basic" 
                                     label="DD" 
+                                    type="number"
+                                    min="0"
+                                    max="59"
                                     className={classNames(classes.bookingInput)}
                                 />
                                 <TextField 

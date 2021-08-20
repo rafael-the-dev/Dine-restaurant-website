@@ -68,6 +68,11 @@ const useResponsive = makeStyles(theme => (
             [theme.breakpoints.up('md')]: {
                 alignItems: 'center'
             }
+        }, 
+        alignLGEnd: {
+            [theme.breakpoints.up('lg')]: {
+                alignItems: 'flex-end !important'
+            }
         }
     }
 ));
