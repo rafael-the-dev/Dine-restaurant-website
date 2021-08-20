@@ -96,6 +96,28 @@ const useServices = makeStyles(theme => ({
             margin: '1.5rem 0 0 0',
             width: '30%'
         }
+    },
+    heroTitle: {
+        [theme.breakpoints.up('md')]: {
+            fontSize: '2.7rem'
+        }
+    },
+    heroDescription: {
+        margin: '1rem auto 0 auto',
+        lineHeight: '1.5rem',
+        width: '90%',
+        [theme.breakpoints.up('sm')]: {
+            width: '80%'
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: '1rem',
+            lineHeight: '1.8rem',
+            margin: '1rem 0 0 0',
+            width: '80%'
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: '60%'
+        }
     }
 }));
 

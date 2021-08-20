@@ -1,6 +1,7 @@
 import Home from '../Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@material-ui/core';
+import Booking from '../Booking';
 
 const theme = createTheme({
     breakpoints: {
@@ -23,6 +24,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
         <Router>
             <Switch>
+                <Route exact path="/booking" component={Booking} />
                 <Route path="/" component={Home} />
             </Switch>
         </Router>

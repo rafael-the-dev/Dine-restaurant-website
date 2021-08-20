@@ -5,6 +5,9 @@ const useDisplay = makeStyles(theme => (
         alignCenter: {
             alignItems: 'center'
         },
+        alignStart: {
+            alignItems: 'flex-start'
+        },
         block: {
             display: 'block'
         },
