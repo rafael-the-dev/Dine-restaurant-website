@@ -115,6 +115,14 @@ const useStyles = makeStyles(theme => ({
             margin: '1.5rem auto 0 auto',
             width: '70%'
         }
+    },
+    emailSuggestion: {
+        color: 'red',
+        marginLeft: 3
+    },
+    emailSuggestionHighlight: {
+        color: '#000',
+        textDecoration: 'underline'
     }
 }));
 
