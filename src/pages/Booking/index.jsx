@@ -4,8 +4,9 @@ import { useBackground, useDisplay, useResponsive, useTypography, useServices } 
 import Mailcheck from "../../assets/js/mailcheck";
 import { useStyles } from './styles.js';
 import classNames from 'classnames';
-import { useState, useEffect, useRef } from 'react';
-import { useForm } from "react-hook-form";
+import { useState, useEffect } from 'react';
+import { useForm, Controller  } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
 
 const Booking = () => {
     const preventDefault = (event) => event.preventDefault();
@@ -19,6 +20,13 @@ const Booking = () => {
     const options = [{ value: 'AM', label: 'AM'}, { value: 'PM', label: 'PM'}];
     const [ guests, setGuests ] = useState(1); 
     const [ dayTime, setDayTime ] = useState('AM');
+    const [ emailSuggestions, setEmailSuggestions ] = useState('');
+
+    const requiredMessage = 'This field is required';
+    const { register, handleSubmit, formState: { errors, isValid }, reset, setError, control, setValue, clearErrors } = useForm({  mode: 'onBlur', 
+        reValidateMode: 'onBlur', shouldUnregister: false });
+
+    const history = useHistory();
 
     const decresaeGuestsNumber = () => {
         let number = guests  - 1;
@@ -37,28 +45,15 @@ const Booking = () => {
         setGuests(g => number);
     };
 
-    useEffect(() => {
-        window.scrollBy({ 
-            top: 0, // could be negative value
-            left: 0, 
-            behavior: 'smooth' 
-          });
-    }, [ ]);
-
-    const selectChangeHandler = event => setDayTime(event.target.value);
-
-    const requiredMessage = 'This field is required';
-    const { register, handleSubmit, formState: { errors }, reset, setError, setValue, clearErrors } = useForm({  mode: 'onBlur', 
-        reValidateMode: 'onBlur', shouldUnregister: false });
     const onSubmit = data => {
-        console.log(data);
-        reset();
+        if(isValid) {
+            data = { ...data, guests: guests};
+            reset();
+            history.push('/')
+        }
     };
 
-    const [ emailSuggestions, setEmailSuggestions ] = useState('');
-
     const domains = ['gmail.com', 'aol.com', 'hotmail.com', 'yahoo.com', 'outlook.com', 'live.com', 'msn.com'];
-    //const secondLevelDomains = ['hotmail']
     const topLevelDomains = ["com", "net", "org"];
     const emailPattern = new RegExp('[a-zA-z0-9]{2,30}@[a-zA-z]{3,15}.com?(.[a-z]{2})?', 'i') ;
     const checkEmail = event => {
@@ -75,7 +70,6 @@ const Booking = () => {
                     emailSuggestion = suggestion.full;
                 }
             });
-            console.log(emailSuggestion)
             if((!emailSuggestion) && (emailPattern.test(value))) {
                 clearErrors('email');
                 setEmailSuggestions(e => '');
@@ -88,16 +82,13 @@ const Booking = () => {
         }
     };
 
-    const emailRef = useRef(null);
-    const labelClickHandler = () => {
-        console.log(emailRef.current)
-        if(emailRef.current) {
-            emailRef.current.value = emailSuggestions
-            clearErrors('email');
-            //setValue('email', emailSuggestions);
-            setEmailSuggestions(e => '');
-        } 
+    const labelClickHandler = async() => {
+        setValue('email', emailSuggestions);
+        clearErrors('email');
+        setEmailSuggestions(e => '');
     };
+
+    const selectChangeHandler = event => setDayTime(event.target.value);
 
     const getEmailHelperText = type => {
         let helperText = '';
@@ -110,6 +101,14 @@ const Booking = () => {
 
         return helperText;
     };
+
+    useEffect(() => {
+        window.scrollBy({ 
+            top: 0, // could be negative value
+            left: 0, 
+            behavior: 'smooth' 
+          });
+    }, [ ]);
 
     return (
         <>
@@ -145,17 +144,23 @@ const Booking = () => {
                             helperText={errors.name?.type === 'required' ? requiredMessage : ''}
                             { ...register('name', { required: requiredMessage})}
                         />
-                        <TextField 
-                            type="email"
-                            label="Email" 
-                            fullWidth
-                            margin="normal"
-                            error={getEmailHelperText(errors.email?.type) ? true : false}
-                            helperText={getEmailHelperText(errors.email?.type)}
-                            { ...register('email', { required: true }) }
-                            onBlur={checkEmail}
-                            ref={emailRef}
-                        />
+                        <Controller
+                            control={control} 
+                            name="email"
+                            defaultValue=""
+                            render={({ field }) => ( //{ ... register('email', { required: true }) }
+                                <TextField 
+                                    type="email"
+                                    label="Email"
+                                    fullWidth
+                                    margin="normal"
+                                    error={getEmailHelperText(errors.email?.type) ? true : false}
+                                    helperText={getEmailHelperText(errors.email?.type)}
+                                    { ...field}
+                                    onBlur={checkEmail}
+                                />
+                            )}
+                         />
                         { emailSuggestions ? (
                             <label 
                                 className={classNames(display.block, classes.emailSuggestion)}  onClick={labelClickHandler}>
