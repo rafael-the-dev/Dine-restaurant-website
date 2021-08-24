@@ -11,11 +11,11 @@ const useStyles = makeStyles(theme => ({
     bookingHero: {
         backgroundImage: `${linearGradient}, url(${mobileImage})`,
         backgroundPosition: 'center top',
-        height: 500,//'94vh',
+        height: 580,//'94vh',
         paddingTop: '5rem',
         [theme.breakpoints.up('sm')]: {
             backgroundImage: `${linearGradientTablet}, url(${tabletImage})`,
-            height: 450
+            height: 500
         },
         [theme.breakpoints.up('md')]: {
             backgroundImage: `${linearGradientTablet}, url(${desktopImage})`,
@@ -27,11 +27,35 @@ const useStyles = makeStyles(theme => ({
         }
     },
     heroPaper: {
-        color: white
+        color: white,
+        marginTop: -113,
+        [theme.breakpoints.up('sm')]: {
+            marginTop: -100
+        },
+        [theme.breakpoints.up('lg')]: {
+            marginTop: -33
+        }
+    },
+    heroTitle: {
+        [theme.breakpoints.up('lg')]: {
+            fontSize: '2.3rem'
+        },
+        [theme.breakpoints.up('xl')]: {
+            fontSize: '2.7rem'
+        }
+    },
+    heroDescription: {
+        [theme.breakpoints.up('md')]: {
+            margin: '1rem auto 0 auto !important'
+        },
+
+        [theme.breakpoints.up('lg')]: {
+            margin: '1rem 0 0 0 !important'
+        }
     },
     heroLink: {
-        [theme.breakpoints.up('md')]: {
-            display: 'none'
+        [theme.breakpoints.up('sm')]: {
+            display: 'none !important'
         }
     },
     bookingFormContainer: {

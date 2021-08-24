@@ -174,7 +174,7 @@ const Form = () => {
 
     const hoursFieldMemo = useMemo(() => (
         <TextField 
-            label="MM" 
+            label="HH" 
             type="number"
             className={classNames(classes.bookingInput)}
             { ...register('hours', { required: true }) }
@@ -184,7 +184,7 @@ const Form = () => {
 
     const minuteFieldMemo = useMemo(() => (
         <TextField 
-            label="DD" 
+            label="MM" 
             type="number"
             className={classNames(classes.bookingInput)}
             { ...register('minutes', { required: true }) }

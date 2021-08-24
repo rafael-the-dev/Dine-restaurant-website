@@ -29,6 +29,11 @@ const useTypography = makeStyles((theme => ({
         [theme.breakpoints.up('md')]: {
             textAlign: 'left'
         }
+    },
+    lgStart: {
+        [theme.breakpoints.up('lg')]: {
+            textAlign: 'left !important'
+        }
     }
 })));
 

@@ -41,6 +41,11 @@ const useResponsive = makeStyles(theme => (
                 flexDirection: 'row !important'
             }
         },
+        justifySMStart: {
+            [theme.breakpoints.up('sm')]: {
+                justifyContent: 'flex-start !important'
+            }
+        },
         flexMDRow: {
             [theme.breakpoints.up('md')]: {
                 flexDirection: 'row !important'

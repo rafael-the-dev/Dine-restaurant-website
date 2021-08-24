@@ -9,15 +9,15 @@ const useStyles = makeStyles(theme => ({
         padding: '1rem 5% 2rem 5%',
         transform: 'translateY(-94px)',
         width: '90%',
-        [theme.breakpoints.up('sm')]: {
-            width: '70%'
+        [theme.breakpoints.up(490)]: {
+            width: '80%'
         },
-        [theme.breakpoints.up('md')]: {
-            width: '50%'
+        [theme.breakpoints.up('sm')]: {
+            width: 340
         },
         [theme.breakpoints.up('lg')]: {
             position: 'absolute',
-            right: '10%',
+            right: '7%',
             top: 0,
             transform: 'translate(0%, -50%)',
             width: 350,
@@ -70,12 +70,15 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             border: `1px solid ${codGrey}`
         },
+        [theme.breakpoints.up(490)]: {
+            width: '80%'
+        },
         [theme.breakpoints.up('sm')]: {
             width: '70%'
         },
         [theme.breakpoints.up('md')]: {
-            margin: '1.5rem auto 0 auto',
-            width: '70%'
+            margin: '1.5rem auto 0 auto !important',
+            width: '70% !important'
         }
     },
     emailSuggestion: {

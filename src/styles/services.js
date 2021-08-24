@@ -2,6 +2,14 @@ import { makeStyles } from "@material-ui/core";
 import { ebonyClay, beaver, white } from "./colors";
 
 const useServices = makeStyles(theme => ({
+    logoContainer: {
+        height: 30,
+       // width: 'max-content'
+    },
+    logo: {
+        height: '100%',
+        width: '100%'
+    },
     container: {
         paddingBottom: '4rem',
         [theme.breakpoints.up('sm')]: {
@@ -79,7 +87,7 @@ const useServices = makeStyles(theme => ({
         fontSize: '.95rem',
         fontWeight: 'bold',
         margin: '1.5rem auto 0 auto',
-        padding: '.7rem 0',
+        padding: '.9rem 0',
         textAlign: 'center',
         textDecoration: 'none',
         transition: 'all 400ms ease-in',
@@ -110,7 +118,7 @@ const useServices = makeStyles(theme => ({
             width: '80%'
         },
         [theme.breakpoints.up('md')]: {
-            fontSize: '1rem',
+            fontSize: '.95rem',
             lineHeight: '1.8rem',
             margin: '1rem 0 0 0',
             width: '80%'

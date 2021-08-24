@@ -5,6 +5,7 @@ import { useStyles } from './styles.js';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import Form from '../../components/Form';
+import logo from '../../assets/icons/logo.svg';
 
 const Booking = () => {
     const preventDefault = (event) => event.preventDefault();
@@ -29,12 +30,18 @@ const Booking = () => {
                 <Grid container alignItems="flex-end" component="section" 
                     className={classNames(classes.bookingHero, bg.noRepeat, bg.cover, 
                     display.flex, display.alignStart, responsive.alignMDCenter, responsive.px, responsive.alignLGEnd)}>
-                    <Grid item xs={12} md={8} lg={7} component={Paper} elevation={0} 
-                        className={classNames(classes.heroPaper, bg.transparent, text.center, text.mdStart)}>
-                        <Typography component="h1" variant="h4" className={services.heroTitle}>
+                    <Grid item component="header" xs={12} className={classNames(services.header, display.flex, 
+                        display.justifyCenter, responsive.justifySMStart)}>
+                        <Link to="/" className={classNames(display.block, services.logoContainer)}>
+                            <img src={logo} className={classNames(display.block, services.logo)} alt="logo" />
+                        </Link>
+                    </Grid>
+                    <Grid item xs={12} lg={7} component={Paper} elevation={0} 
+                        className={classNames(classes.heroPaper, bg.transparent, text.center, text.lgStart)}>
+                        <Typography component="h1" variant="h4" className={classNames(services.heroTitle, classes.heroTitle)}>
                             Exquisite dining<br/>since 1989
                         </Typography>
-                        <Typography component="p" variant="body2" className={services.heroDescription}>
+                        <Typography component="p" variant="body2" className={classNames(services.heroDescription, classes.heroDescription)}>
                             Experience our seasonal menu in beautiful country surroundings. Eat the 
                             freshest produce from the comfort of our farmhouse.
                         </Typography>
