@@ -1,15 +1,15 @@
 import { Container, Typography, Grid, Paper } from '@material-ui/core';
 import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.jpg';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useStyles } from './styles.js';
 import Footer from '../../components/Footer';
 import { useBackground, useDisplay, useResponsive, useTypography, useServices } from '../../styles';
 import HighlightCard from '../../components/HighlightCard';
 import React from 'react';
 import classNames from 'classnames';
-import GatheringSection from '../../components/GatheringSection';
 import logo from '../../assets/icons/logo.svg';
 import { Link } from 'react-router-dom';
+import Carossel from '../../components/Carossel';
 
 
 const Home = () => {
@@ -23,7 +23,6 @@ const Home = () => {
     const placesRef = useRef(null);
     const card1ImageRef = React.createRef();
 
-    const [ carossel, setCarossel ] = useState('family');
 
     const setImage = useCallback((ref, name) => {
         import(`../../assets/images/homepage/${name}`)
@@ -50,10 +49,6 @@ const Home = () => {
 
         return () => window.onresize = null;
     }, [ imageFilter ]);
-
-    const familyGatheringClickHandler = () => setCarossel(c => 'family');
-    const specialEventsClickHandler = () => setCarossel(c => 'special');
-    const socialEventsClickHandler = () => setCarossel(c => 'social');
 
     return (
         <>
@@ -142,42 +137,7 @@ const Home = () => {
                          />
                     </Grid>
                 </Grid>
-                <Grid container component="section" >
-                    <GatheringSection 
-                        ref={placesRef} 
-                        name="family" 
-                        title="Family Gathering"
-                        familyGatheringClickHandler={familyGatheringClickHandler} 
-                        specialEventsClickHandler={specialEventsClickHandler}
-                        socialEventsClickHandler={socialEventsClickHandler}
-                        carossel={carossel}
-                        description="We love catering for entire families. So please bring everyone along 
-                        for a special meal with your loved ones. We’ll provide a memorable 
-                        experience for all."
-                    />
-                    <GatheringSection 
-                        ref={placesRef} 
-                        name="special" 
-                        title="Special Events"
-                        familyGatheringClickHandler={familyGatheringClickHandler} 
-                        specialEventsClickHandler={specialEventsClickHandler}
-                        socialEventsClickHandler={socialEventsClickHandler}
-                        carossel={carossel}
-                        description="Whether it’s a romantic dinner or special date you’re celebrating with 
-                        others we’ll look after you. We’ll be sure to mark your special date with an unforgettable meal."
-                    />
-                    <GatheringSection 
-                        ref={placesRef} 
-                        name="social" 
-                        title="Social Events"
-                        familyGatheringClickHandler={familyGatheringClickHandler} 
-                        specialEventsClickHandler={specialEventsClickHandler}
-                        socialEventsClickHandler={socialEventsClickHandler}
-                        carossel={carossel}
-                        description="Are you looking to have a larger social event? No problem! We’re more 
-                        than happy to cater for big parties. We’ll work with you to make your event a hit with everyone."
-                    />
-                </Grid>
+                <Carossel />
                 <Container maxWidth={false} className={classNames(classes.reservationSection, bg.noRepeat, bg.cover, display.flex,
                     display.flexColumn, display.justifyCenter, display.alignCenter, responsive.flexMDRow, 
                     responsive.justifyMDBetween, text.center, responsive.px)} component="section">
