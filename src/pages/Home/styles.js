@@ -128,6 +128,7 @@ const useStyles = makeStyles(theme => ({ //
         width: '100%'
     },
     servicesContent: {
+        marginTop: '3rem',
         textAlign: 'center',
         [theme.breakpoints.up('md')]: {
             textAlign: 'left'
@@ -180,7 +181,7 @@ const useStyles = makeStyles(theme => ({ //
         }
     },
     foodSection: {
-        marginTop: '4rem',
+        marginTop: '1rem',
         [theme.breakpoints.up('md')]: {
             marginTop: 0,
             transform: 'translateY(73px)'

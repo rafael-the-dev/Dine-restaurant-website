@@ -16,7 +16,8 @@ const GatheringSection = React.forwardRef(({familyGatheringClickHandler, special
     return (
         <Grid container item xs={12} className={classNames({[classes.displaySection]: name === carossel}, 
             classes.gatheringSection, responsive.px, responsive.AlignLGCenter)} component="section">
-            <Grid item xs={12} md={12} lg={5} xl={4} component="figure" className={services.imageContainer}>
+            <Grid item xs={12} md={12} lg={5} xl={4} component="figure" 
+                className={classNames(classes.gatheringSectionImageContainer, services.imageContainer)}>
                 <img ref={ref}  alt={ title } className={services.image} />
             </Grid>
             <Grid container item direction="column" xs={12} md={12} lg={7} xl={8} className={`${classes.gatheringSectionContentContainer}`}>

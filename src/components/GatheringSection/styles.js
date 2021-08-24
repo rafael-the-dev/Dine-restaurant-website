@@ -14,16 +14,22 @@ const useStyles = makeStyles(theme => ({
     },
     gatheringSection: {
         display: 'none',
-        paddingBottom: '2rem',
-        paddingTop: '2rem',
+        paddingBottom: '4rem',
+        paddingTop: '4rem',
         [theme.breakpoints.up('sm')]: {
             marginBottom: '4rem',
             paddingTop: '5rem'
         }
     },
     gatheringSectionImageContainer: {
+        marginBottom: '3rem',
+        transform: 'translateY(0) !important',
+        [theme.breakpoints.up('sm')]: {
+            marginBottom: '1rem'
+        },
         [theme.breakpoints.up('lg')]: {
-            height: 450
+            height: 450,
+            marginBottom: 0
         }
     },
     gatheringSectionContentContainer: {
