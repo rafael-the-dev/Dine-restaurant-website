@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     gatheringSectionImageContainer: {
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             height: 450
         }
     },
@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             marginTop: '3rem'
         },
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
+            marginTop: '0 !important',
             paddingLeft: '10%',
             flexDirection: 'column-reverse'
         }
@@ -45,7 +46,7 @@ const useStyles = makeStyles(theme => ({
         '&:not(.active):hover': {
             ...activeAndHover
         },
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             paddingLeft: 0
         }
     },
@@ -55,8 +56,30 @@ const useStyles = makeStyles(theme => ({
     gatheringSectionContent: {
         marginTop: '2rem',
         [theme.breakpoints.up('md')]: {
+            textAlign: 'center !important'
+        },
+        [theme.breakpoints.up('lg')]: {
             marginBottom: '2rem',
-            marginTop: 0
+            marginTop: 0,
+            textAlign: 'left !important'
+        }
+    },
+    gatheringSectionTitle: {
+        '&::before': {
+            [theme.breakpoints.up('md')]: {
+                margin: '0 auto 2.3rem auto !important'
+            },
+            [theme.breakpoints.up('lg')]: {
+                margin: '0 0 2.3rem 0 !important'
+            }
+        }
+    },
+    gatheringSectionDescription: {
+        [theme.breakpoints.up('md')]: {
+            margin: '1.3rem auto 0 auto !important'
+        },
+        [theme.breakpoints.up('lg')]: {
+            margin: '1.3rem 0 0 0 !important'
         }
     },
     gatheringSectionLink: {
@@ -68,8 +91,16 @@ const useStyles = makeStyles(theme => ({
             border: `1px solid ${codGrey}`,
             color: codGrey,
         },
-        [theme.breakpoints.up('sm')]: {
-            marginTop: '3rem'
+        [theme.breakpoints.up('md')]: {
+            margin: '1.5rem auto 0 auto !important'
+        },
+        [theme.breakpoints.up('lg')]: {
+            margin: '1rem 0 0 0 !important',
+            width: '50% !important'
+        },
+        [theme.breakpoints.up('xl')]: {
+            marginTop: '1.5rem !important',
+            width: '35% !important'
         }
     }
 }));

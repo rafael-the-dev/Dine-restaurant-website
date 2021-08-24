@@ -211,6 +211,9 @@ const useStyles = makeStyles(theme => ({ //
     reservationSectionTitle: {
         color: white,
         fontWeight: 700,
+        [theme.breakpoints.up('md')]: {
+            fontSize: '1.2rem'
+        },
         [theme.breakpoints.up('lg')]: {
             fontSize: '1.8rem'
         }
@@ -218,6 +221,7 @@ const useStyles = makeStyles(theme => ({ //
     reservationSectionLink: {
         [theme.breakpoints.up('md')]: {
             marginTop: 0,
+            width: '33%'
         },
         [theme.breakpoints.up('lg')]: {
             width: '20%'
@@ -236,10 +240,17 @@ const useStyles = makeStyles(theme => ({ //
         color: white,
         [theme.breakpoints.up('sm')]: {
             fontSize: '1.7rem'
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: '1.2rem'
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize: '1.6rem'
         }
     },
     highlightDescription: {
         [theme.breakpoints.up('md')]: {
+            fontSize: '.9rem',
             marginLeft: 0,
             marginRight: 0
         }

@@ -74,9 +74,24 @@ const useResponsive = makeStyles(theme => (
                 alignItems: 'center'
             }
         }, 
-        alignLGEnd: {
-            [theme.breakpoints.up('lg')]: {
+        alignLGEnd: { 
+            [theme.breakpoints.up('lg')]: { //
                 alignItems: 'flex-end !important'
+            }
+        },
+        alignLGStart: { 
+            [theme.breakpoints.up('lg')]: {
+                alignItems: 'flex-start !important'
+            }
+        },
+        AlignLGCenter: { 
+            [theme.breakpoints.up('lg')]: {
+                alignItems: 'center !important'
+            }
+        },
+        flexLGColumn: { 
+            [theme.breakpoints.up('lg')]: {
+                flexDirection: 'column !important'
             }
         }
     }

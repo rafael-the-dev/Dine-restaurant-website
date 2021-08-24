@@ -120,8 +120,8 @@ const Home = () => {
                             of our diner’s favourites. Our menu is revamped every season.
                         </Typography>
                     </Grid>
-                    <Grid item md={1}></Grid>
-                    <Grid item xs={12} md={7} component={Paper} elevation={0} 
+                    <Grid item lg={1}></Grid>
+                    <Grid item xs={12} md={8} lg={7} component={Paper} elevation={0} 
                         className={classNames(bg.transparent, classes.highlightCardsContainer)}>
                         <HighlightCard ref={card1ImageRef} 
                             title="Seared Salmon Fillet"
