@@ -1,4 +1,4 @@
-import { Container, Typography, Grid, Paper, Link } from '@material-ui/core';
+import { Container, Typography, Grid, Paper } from '@material-ui/core';
 import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.jpg';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useStyles } from './styles.js';
@@ -9,6 +9,7 @@ import React from 'react';
 import classNames from 'classnames';
 import GatheringSection from '../../components/GatheringSection';
 import logo from '../../assets/icons/logo.svg';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -19,7 +20,6 @@ const Home = () => {
     const text = useTypography();
     const services = useServices();
 
-    const preventDefault = (event) => event.preventDefault();
     const placesRef = useRef(null);
     const card1ImageRef = React.createRef();
 
@@ -77,8 +77,8 @@ const Home = () => {
                             Experience our seasonal menu in beautiful country surroundings. Eat the 
                             freshest produce from the comfort of our farmhouse.
                         </Typography>
-                        <Link href="/" onClick={preventDefault}  className={classes.heroLink}>
-                            Link
+                        <Link to="/booking"  className={classNames(classes.heroLink, text.uppercase)}>
+                            Book a table
                         </Link>
                     </Grid>
                 </Grid>
@@ -184,8 +184,8 @@ const Home = () => {
                     <Typography component="h2" variant="h5" className={classNames(classes.reservationSectionTitle)}>
                         Ready to make a reservation?
                     </Typography>
-                    <Link href="/" onClick={preventDefault}  className={classNames(classes.heroLink, classes.reservationSectionLink)}>
-                        Link
+                    <Link to="/booking" className={classNames(text.uppercase, classes.heroLink, classes.reservationSectionLink)}>
+                        Book a table
                     </Link>
                 </Container>
             </Container>

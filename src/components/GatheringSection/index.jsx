@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography, Grid, Paper, Link, ButtonGroup, Button } from '@material-ui/core';
+import { Typography, Grid, Paper, ButtonGroup, Button } from '@material-ui/core';
 import { useDisplay, useResponsive, useTypography, useServices } from '../../styles';
 import classNames from 'classnames';
 import { useStyles } from './styles.js';
+import { Link } from 'react-router-dom';
 
 const GatheringSection = React.forwardRef(({familyGatheringClickHandler, specialEventsClickHandler, 
     socialEventsClickHandler, name, carossel, title, description }, ref) => { 
@@ -11,10 +12,6 @@ const GatheringSection = React.forwardRef(({familyGatheringClickHandler, special
     const responsive = useResponsive();
     const text = useTypography();
     const services = useServices();
-
-   // console.log(classNames({[classes.active]: name === carossel}))
-
-    const preventDefault = (event) => event.preventDefault();
 
     return (
         <Grid container item xs={12} className={classNames({[classes.displaySection]: name === carossel}, 
@@ -41,8 +38,8 @@ const GatheringSection = React.forwardRef(({familyGatheringClickHandler, special
                     <Typography component="p" variant="body2" className={services.description}>
                         { description }
                     </Typography>
-                    <Link href="/" onClick={preventDefault}  className={classNames(services.link, classes.gatheringSectionLink)}>
-                        Link
+                    <Link to="/booking" className={classNames(text.uppercase, services.link, classes.gatheringSectionLink)}>
+                        Book a table
                     </Link>
                 </Paper>
             </Grid>

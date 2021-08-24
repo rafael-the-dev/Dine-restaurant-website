@@ -92,7 +92,9 @@ const useStyles = makeStyles(theme => ({ //
         },
         [theme.breakpoints.up('md')]: {
             margin: '1.5rem 0 0 0',
-            width: '30%'
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: '35%'
         }
     },
     services: {
