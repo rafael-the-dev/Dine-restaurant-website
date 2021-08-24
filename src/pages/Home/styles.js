@@ -13,30 +13,42 @@ const linearGradientTablet = 'linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba
 const useStyles = makeStyles(theme => ({ //
     homeHero: {
         backgroundImage: `${linearGradient}, url(${heroImage})`,
-        backgroundPosition: 'center top',
-        height: 550,//'94vh',
+        backgroundPosition: 'center top -30px',
+        flexDirection: 'column',
+        height: 650,//'94vh',
+        paddingTop: '5rem',
+        [theme.breakpoints.up(500)]: {
+            paddingTop: '9rem'
+        },
         [theme.breakpoints.up('sm')]: {
             backgroundImage: `${linearGradientTablet}, url(${heroImageTablet})`,
             height: 700
         },
         [theme.breakpoints.up('md')]: {
             backgroundImage: `${linearGradientTablet}, url(${heroImageDesktop})`,
+            backgroundPosition: 'center top',
             height: 600,
-        },
-        [theme.breakpoints.up('lg')]: {
-            height: 700
+            paddingBottom: '7rem',
+            paddingTop: '3rem'
         }
+    },
+    heroHeader: {
+        flexBasis: 'unset !important'
     },
     heroPaper: {
         backgroundColor: 'transparent',
         color: white,
-        marginBottom: '8rem',
+        flexBasis: 'unset !important',
+        marginTop: '2rem',
         [theme.breakpoints.up('md')]: {
-            marginBottom: 0
+           // marginTop: 0
         }
     },
     heroTitle: {
         [theme.breakpoints.up('md')]: {
+            fontSize: '2.5rem'
+        },
+        [theme.breakpoints.up('lg')]: {
             fontSize: '2.7rem'
         }
     },
@@ -95,7 +107,7 @@ const useStyles = makeStyles(theme => ({ //
     servicesImageContainer: {
         boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px',
         height: 350,
-        transform: 'translateY(-60px)',
+        transform: 'translateY(-5px)',
         zIndex: 10,
         [theme.breakpoints.up('sm')]: {
             height: 300,

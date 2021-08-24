@@ -3,11 +3,12 @@ import enjoyablePlace from '../../assets/images/homepage/enjoyable-place-mobile.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useStyles } from './styles.js';
 import Footer from '../../components/Footer';
-import { useBackground, useDisplay, useResponsive, useTypography } from '../../styles';
+import { useBackground, useDisplay, useResponsive, useTypography, useServices } from '../../styles';
 import HighlightCard from '../../components/HighlightCard';
 import React from 'react';
 import classNames from 'classnames';
 import GatheringSection from '../../components/GatheringSection';
+import logo from '../../assets/icons/logo.svg';
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
     const display = useDisplay();
     const responsive = useResponsive();
     const text = useTypography();
+    const services = useServices();
 
     const preventDefault = (event) => event.preventDefault();
     const placesRef = useRef(null);
@@ -58,7 +60,14 @@ const Home = () => {
             <Container component="main" maxWidth={false} disableGutters className={classes.homeMain}>
                 <Grid container alignItems="flex-end" component="section" 
                     className={classNames(classes.homeHero, bg.noRepeat, bg.cover, 
-                    display.flex, responsive.alignMDCenter, responsive.px)}>
+                    display.flex, responsive.alignMDStart, responsive.px, display.alignCenter, display.justifyCenter,
+                    responsive.justifyMDBetween)}>
+                    <Grid item component="header" xs={12} className={classNames(services.header, display.flex, 
+                        display.justifyCenter, responsive.justifySMStart, classes.heroHeader)}>
+                        <Link to="/" className={classNames(display.block, services.logoContainer)}>
+                            <img src={logo} className={classNames(display.block, services.logo)} alt="logo" />
+                        </Link>
+                    </Grid>
                     <Grid item xs={12} md={7} component={Paper} elevation={0} 
                         className={`${classes.heroPaper} ${text.center} ${text.mdStart}`}>
                         <Typography component="h1" variant="h4" className={classes.heroTitle}>
