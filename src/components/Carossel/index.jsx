@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import GatheringSection from '../../components/GatheringSection';
 import { Grid } from '@material-ui/core';
 
-const Carossel = () => {
+const Carossel = ({ familyImageRef, socialImageRef, specialImageRef}) => {
     const [ carossel, setCarossel ] = useState('family');
 
-    const familyImageRef = React.createRef();
+    /*const familyImageRef = React.createRef();
     const socialImageRef = React.createRef();
-    const eventsImageRef = React.createRef();
+    const eventsImageRef = React.createRef(); */
 
     const familyGatheringClickHandler = () => setCarossel(c => 'family');
     const specialEventsClickHandler = () => setCarossel(c => 'special');
@@ -39,7 +39,7 @@ const Carossel = () => {
                 others we’ll look after you. We’ll be sure to mark your special date with an unforgettable meal."
             />
             <GatheringSection 
-                ref={eventsImageRef} 
+                ref={specialImageRef} 
                 name="social" 
                 title="Social Events"
                 familyGatheringClickHandler={familyGatheringClickHandler} 

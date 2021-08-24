@@ -5,7 +5,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { useStyles } from './styles.js';
 import { useTypography, useBackground, useResponsive } from '../../styles';
-import image from '../../assets/images/homepage/salmon-mobile.jpg';
 
 const HighlightCard = React.forwardRef(({ title, description}, ref) => {
     const classes  = useStyles();
@@ -18,8 +17,9 @@ const HighlightCard = React.forwardRef(({ title, description}, ref) => {
             <CardMedia
                 ref={ref}
                 className={`${classes.highlightCardImage}`}
-                image={image}
                 title="Contemplative Reptile"
+                component="img"
+                alt={ title }
                 />
             <CardContent className={`${text.center} ${bg.highlightCardContent} ${text.smStart} ${classes.highlightCardContent}`}>
                 <Typography gutterBottom variant="h6" component="h3" className={`${text.light} ${text.weight7}
